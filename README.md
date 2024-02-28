@@ -6,4 +6,4 @@ ffmpeg 6.1/6.1.1 introduced what seems to be a bug when encoding videos with x26
 
 Please reference run.sh for the involved ffmpeg commands.
 
-After running run.sh please compare waves-6-0-1.mov with waves-6-1-1.mov. You will notice that waves-6-1-1.mov has some frozen frames at the beginning of the video which should not be there.
+The input video is a 1fps video. After running run.sh please compare output-6-0-1.mov with output-6-1-1.mov. You will notice that output-6-1-1.mov has some frozen frames at the beginning of the video which should not be there.
