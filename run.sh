@@ -2,8 +2,8 @@
 set -eux -o pipefail
 
 # build docker images
-docker build --build-arg FFMPEG_VERSION=ffmpeg-6.0.1 -t ffmpeg-6-0-1 .
-docker build --build-arg FFMPEG_VERSION=ffmpeg-6.1.1 -t ffmpeg-6-1-1 .
+docker build --no-cache --build-arg FFMPEG_VERSION=ffmpeg-6.0.1 -t ffmpeg-6-0-1 .
+docker build --no-cache --build-arg FFMPEG_VERSION=ffmpeg-6.1.1 -t ffmpeg-6-1-1 .
 
 # run with ffmpeg-6.0.1
 docker run -v `pwd`:/work --rm -it ffmpeg-6-0-1 \
