@@ -26,7 +26,9 @@ RUN set -ex && apk add --no-cache \
     wget \
     x264-dev \
     x265-dev \
-    yasm
+    yasm \
+    freetype \
+    harfbuzz
 
 # Get ffmpeg source.
 RUN set -ex \
@@ -48,7 +50,11 @@ RUN set -ex \
         --enable-pthreads \
         --enable-gpl \
         --enable-libx264 \
+        --enable-libx265 \
         --enable-runtime-cpudetect \
+        --enable-libfreetype \
+        --enable-libharfbuzz \
+        --enable-libfontconfig \
     && make -j$(nproc) \
     && make install \
     && make clean \
@@ -62,7 +68,12 @@ RUN set -ex && apk add --no-cache \
     bash \
     x264-dev \
     x265-dev \
-    libbz2
+    libbz2 \
+    freetype \
+    harfbuzz \
+    fontconfig \
+    ttf-freefont font-noto terminus-font \
+    && fc-cache -f
 
 COPY --from=ffmpeg /opt/ffmpeg/bin/ffprobe /usr/bin/ffprobe
 COPY --from=ffmpeg /opt/ffmpeg/bin/ffmpeg /usr/bin/ffmpeg
