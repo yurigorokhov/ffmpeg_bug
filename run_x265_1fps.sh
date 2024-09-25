@@ -7,7 +7,7 @@ VERSION=7.0
 docker build --build-arg FFMPEG_VERSION=ffmpeg-${VERSION} -t ffmpeg-${VERSION} .
 
 
-# generate video with frozen frames
+# transcode to 1fps
 docker run -v `pwd`:/work --rm -it ffmpeg-${VERSION} \
     ffmpeg -y -hide_banner -r 1/1 -ignore_editlist true -loglevel error -i /work/input_test_long.mov -an /work/input_test_long_1fps.mov
 
